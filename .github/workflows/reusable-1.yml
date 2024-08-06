@@ -19,14 +19,18 @@ jobs:
     timeout-minutes: 90 # maps to Jenkins: timeout(time: 90, unit: 'MINUTES')
     
     steps:
-      - name: print stuff
-        run: |
-          echo "GITHUB_ACTION: $GITHUB_ACTION"
-          echo "GITHUB_ACTION_PATH: $GITHUB_ACTION_PATH"
-          echo "GITHUB_ACTION_REPOSITORY: $GITHUB_ACTION_REPOSITORY"
+      - name: run without cloning
+        run: ./test.sh
+        continue-on-error: true
 
-      - name: list paths
-        run: |
-          pwd
-          ls -a
-  
+      - name: clone myself
+        uses: actions/checkout@v4
+        with:
+          repository: mcascone/reusable-workflow-tester
+
+      - name: show my place
+        run: pwd && tree
+
+      - name: try running again
+        run: ./test.sh
+      
