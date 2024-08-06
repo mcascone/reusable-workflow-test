@@ -1,0 +1,32 @@
+name: reusable-tester-1
+
+on: 
+  workflow_call:
+    inputs:
+      settings:
+        required: false
+        type: string
+        description: JSON string with settings including appId, jiraKey, liveTests, performanceTests, prod, and nodeVersion
+        
+  workflow_dispatch:
+
+
+jobs:
+  initialize:
+    runs-on: linux
+    permissions:
+      contents: read
+    timeout-minutes: 90 # maps to Jenkins: timeout(time: 90, unit: 'MINUTES')
+    
+    steps:
+      - name: print stuff
+        run: |
+          echo "GITHUB_ACTION: $GITHUB_ACTION"
+          echo "GITHUB_ACTION_PATH: $GITHUB_ACTION_PATH"
+          echo "GITHUB_ACTION_REPOSITORY: $GITHUB_ACTION_REPOSITORY"
+
+      - name: list paths
+        run: |
+          pwd
+          ls -a
+  
