@@ -13,7 +13,7 @@ on:
 
 jobs:
   initialize:
-    runs-on: linux
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     timeout-minutes: 90 # maps to Jenkins: timeout(time: 90, unit: 'MINUTES')
