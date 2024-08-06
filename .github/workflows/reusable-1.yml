@@ -31,6 +31,9 @@ jobs:
       - name: show my place
         run: pwd && tree
 
+      - name: Make the script files executable
+        run: chmod +x ./test.sh
+      
       - name: try running again
         run: ./test.sh
       
