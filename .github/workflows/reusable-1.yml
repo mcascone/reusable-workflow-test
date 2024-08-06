@@ -26,7 +26,7 @@ jobs:
       - name: clone myself
         uses: actions/checkout@v4
         with:
-          repository: mcascone/reusable-workflow-tester
+          repository: mcascone/reusable-workflow-test
 
       - name: show my place
         run: pwd && tree
